@@ -56,7 +56,24 @@
 \section*{Dummit\&Foote Abstract Algebra section 15.1 Solutions for Selected Problems by 3 mod(8)}
 Author: SungBin Park, Physics, 20150462
 \begin{enumerate}
-\item[3.]
+\item[3.] I'll a lemma to use.
+\begin{lemma}
+For a field $k$, $k[x]$ has infinitely many primes, which is irreducible.
+\end{lemma}
+\begin{proof}
+Since $k$ is a field, $k{x}$ is a P.I.D, so any prime ideals are maximal ideal, and a prime element is a irreducible element. Let there are finitely many prime element: $p_1(x),p_2(x)\ldots, p_n(x)$ for $n\in \mathbb{N}$, and let $p(x)=\prod_{i=1}^n p_i(x)+1$. Since $p(x)$ is not a prime element, the $(p(x))$ should be contained in one of the maximal ideal $(p_i(x))$ for some $i$. WLOG, let $i=1$. However, $(p(x),p_1(x))=1$, so it is contradiction to $p(x)\in (p_i(x))$. Therefore, there are infinitely many primes in $k[x]$. Since primes are irreducibles in P.I.D, the last statement follows.
+\end{proof}
+\begin{lemma}
+...
+\end{lemma}
+\begin{proof}
+Since $k$ is a field, $k{x}$ is a P.I.D, so any prime ideals are maximal ideal, and a prime element is a irreducible element. Let there are finitely many prime element: $p_1(x),p_2(x)\ldots, p_n(x)$ for $n\in \mathbb{N}$, and let $p(x)=\prod_{i=1}^n p_i(x)+1$. Since $p(x)$ is not a prime element, the $(p(x))$ should be contained in one of the maximal ideal $(p_i(x))$ for some $i$. WLOG, let $i=1$. However, $(p(x),p_1(x))=1$, so it is contradiction to $p(x)\in (p_i(x))$. Therefore, there are infinitely many primes in $k[x]$. Since primes are irreducibles in P.I.D, the last statement follows.
+\end{proof}
+\begin{proof}
+Let $k(x)$ is finitely generated k-algebra, so $k(x)=\left(\frac{a_1(x)}{b_1(x)},\frac{a_2(x)}{b_2(x)},\ldots, \frac{a_n(x)}{b_n(x)}\right)$ for some $n\in \mathbb{N}$, $a_i(x),b_i(x)\in k[x]$, $a(x)$ and $b(x)$ relatively prime. Since $k[x]$ is U.F.D, let $p_{ij}(x)$ be irreducible factors of $a_i(x)$, i.e., $a_i(x)=u_i\prod_{j=1}^{m_i}p_{ij}(x)$ for some unit $u_i$. By the lemma above, there is a irreducible $p(x)$ such that $p(x)\notin (p_{11}(x), \ldots, p_{1m_i}(x),p_{21}(x),\ldots, p_{nm_n}(x))$.
+
+Let $\frac{1}{p(x)}\in k(x)=\left(\frac{a_1(x)}{b_1(x)},\frac{a_2(x)}{b_2(x)},\ldots, \frac{a_n(x)}{b_n(x)}\right)$, then $\frac{1}{p(x)}\in k\left[\frac{a_1(x)}{b_1(x)},\frac{a_2(x)}{b_2(x)},\ldots, \frac{a_n(x)}{b_n(x)}\right]$. Since $\frac{1}{p(x)}$ is not constant, and right hand side is polynomial, it would be written as $\frac{r(x)}{t(x)}$ for some $r(x),t(x)\in k[x]$. Note that $t(x)$ is at least degree 1 polynomial having a irreducible factor in $p_{ij}(x)$ for some $i,j$.... To meet $\frac{1}{p(x)}=\frac{r(x)}{t(x)}$, $t(x)=p(x)r(x)$ but it means  $r(x)$ is divided by $p(x)$ which is contradiction to assumption. Therefore, $k(x)$ is not finitely generated k-algebra
+\end{proof}
 \item[11.]
 \item[19.]
 \item[27.]
