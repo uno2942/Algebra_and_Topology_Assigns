@@ -1,0 +1,165 @@
+\documentclass{article} 
+\usepackage{graphicx, amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{kotex}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{mathrsfs}
+\usepackage{tikz-cd}
+\usepackage{mathtools}
+
+\textwidth 6.5 truein 
+\oddsidemargin 0 truein 
+\evensidemargin -0.50 truein 
+\topmargin -.5 truein 
+\textheight 8.5in
+
+\DeclareMathOperator{\cc}{\mathbb{C}}
+\DeclareMathOperator{\rr}{\mathbb{R}}
+\DeclareMathOperator{\bA}{\mathbb{A}}
+\DeclareMathOperator{\fra}{\mathfrak{a}}
+\DeclareMathOperator{\frb}{\mathfrak{b}}
+\DeclareMathOperator{\frm}{\mathfrak{m}}
+\DeclareMathOperator{\frp}{\mathfrak{p}}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\slin}{\mathfrak{sl}}
+\DeclareMathOperator{\Lie}{\mathsf{Lie}}
+\DeclareMathOperator{\Alg}{\mathsf{Alg}}
+\DeclareMathOperator{\Spec}{\mathrm{Spec}}
+\DeclareMathOperator{\End}{\mathrm{End}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Sch}{\mathbf{Sch}}
+\newcommand{\Ring}{\mathbf{Ring}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\B}{\mathcal{B}}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+
+
+\begin{document}
+
+
+\title{General Topology - HW 2}
+\author{SungBin Park, 20150462} 
+
+ \maketitle
+\section*{Problem 1}
+\begin{enumerate}
+\item Let $\T$ be a topology on $Y$. To make $i$ continuous, for all open set $U$ on $X$, $i^{-1}(U)$ should be open in $Y$:
+\begin{equation*}
+\begin{split}
+i^{-1}(U)&=i^{-1}(U)\cap Y\\
+&=i^{-1}(U)\cap i^{-1}(Y)\\
+&=i^{-1}(U\cap Y)\\
+&=U\cap Y
+\end{split}
+\end{equation*}
+Therefore, $U\cap Y\in \T$, and this implies that subspace topology is contained in arbitrary topology on $Y$.
+\item Let $\T_z$ be a topology on $Z$. Let $U\in \T_z$, then $f^{-1}(U)$ is a open set of $X$. If $Y$ is equipped subspace topology, (or equipped topology s.t. making $i$ continuous) $\left(f|_Y\right)^{-1}(U)=f^{-1}(U)\cap Y$. It implies if $\T$ on Y contains subspace topology, $f|_Y$ is continuous.
+\item ($\Rightarrow$) If $f$ is continuous, $i\circ f$ is continuous since $f$ and $i$ is continuous.
+
+($\Leftarrow$) If $i\circ f$ is continuous, for every open set $U$ in X, $f^{-1}\circ i^{-1}(U)$ is open set in $Z$. Let $V$ be a open set in $Y$, then there exists open set $A$ in $X$ such that $A \cap Y=V$. Also, $i^{-1}(A)=V$ and $f^{-1}\circ i^{-1}(V)=f^{-1}(V)$ is open in $Z$. Therefore, $f$ is continuous.
+\end{enumerate}
+\section*{Problem 2}
+Let $A$ be a basis of standard topology of $\rr$ and $U=f^{-1}(A)$, $V=g^{-1}(A)$. Let $h:X\rightarrow\rr\times \rr$ such that $h(x)=(f(x), g(x)))$ and  $i_1:\rr\times\rr\rightarrow\rr$ such that $i_1(a,b)=a+b$. Then, $f+g=i_1\circ h$. Since $f$ and $g$ is continuous, $h$ is continuous, so I need to show that $i_1$ is continuous. Let $i_1^{-1}\left((a,b)\right)=D$ and let $(x_0,y_0)=t\in D$, then $\exists c\in \rr$ such that $a<c<b$ and $x_0+y_0=c$. Define $R_r\left((x_0,y_0)\right)=\{(x,y)\in \rr\times \rr|\abs{x_0-x}<r \text{ or }\abs{y_0-y}<r\}$ and let $r=\min(\frac{b-c}{100\sqrt{2}},\frac{c-a}{100\sqrt{2}})$, then $R_r(t)$ is inside $D$ since the length of diagonal is smaller than the distance between $c$ and $x+y=a$, $x+y=b$. Therefore, $D$ is open, and $i_1$ is continuous. Hence, $f+g$ is continuous.
+
+Let $i_2:\rr\times\rr \rightarrow\rr $, $i_2(x,y)=x-y$, then $i_2$ is continuous using above argument.(The difference between $i_1$ and $i_2$ is that the shape of graph is rotated by $90^o$.) Therefore, $f-g$ is also continuous.
+
+Let $i_3:\rr\times\rr \rightarrow\rr $, $i_3(x,y)=xy$. Let $D=i_3^{-1}\left((a,b)\right)$, $(x_0,y_0)\in D$, and $c=x_0y_0$. Set $r>0$ satisfying $\abs{x_0}>r$, $\abs{y_0}>r$, $\abs{r(x_0+y_0)-r^2}>c-a$and $\abs{r(x_0+y_0)-r^2}<b-c$. It is possible since all the equation goes $0$ as $r\rightarrow 0$. Then $R_{r/10}\left((x_0,y_0)\right)\in D$. Hence, $D$ is open and $i_3^{-1}$ is continuous.
+
+Let $i_4:\rr\setminus\{0\} \rightarrow\rr $, $i_3(y)=1/y$, then
+\begin{equation*}
+i_3^{-1}((a,b))=
+\begin{cases}
+(1/b,1/a) & \text{if }0<a<b \text{ or }a<b<0\\
+(1/b, \infty) & \text{if } 0=a,0<b \\
+(-\infty, 1/a) & \text{if } a<0,0=b \\
+(-\infty, 1/a)\cup (1/b,\infty) & \text{if } a<0, b>0
+\end{cases}
+\end{equation*}
+Therefore, $i_4$ is continuous function from $\rr\setminus\{0\}$ to $\rr\setminus\{0\}$. $i_5:\rr\times \rr\setminus\{0\}\rightarrow \rr$ by $i_5=i_3 \circ (\text{id},i_4)$ is continuous and $f/g:X\times X\rightarrow \rr$ by $f/g=i_5 \circ (f,g)$ is continuous for $g\neq 0$.
+\section*{Problem 3}
+Let $f(x,y)=(\frac{x+\sqrt{1-y^2}}{2}, y)$ from $\rr^2$ to $\rr^2$. I'll first prove that $\sqrt{y}$ is continuous. Since the domain of $\sqrt{y}$ is $\rr^+\cap \{0\}$, let open interval $(a, b)$, $0\leq a<b$. Then, inverse image of $(a,b)$ in $\sqrt{y}$ is $(\sqrt{a}, \sqrt{b})$. Therefore, it is continuous, and $\sqrt{1-y^2}=h_1(y)\circ h_2(y)$, which is $h_1(y)=\sqrt{y}$, $h_2(y)=1-y^2$, is continuous. Therefore, $g_1(x,y)=y$, $g_2(x,y)=x$, $g_3(x,y)=\sqrt{1-y^2}$, $g_4(x,y)=1/2$ are continuous, and $g_4(g_2+g_3)$ is continuous by problem 2. Therefore, $f(x,y)=(g_4(x,y)(g_2(x,y)+g_3(x,y),g_1(x,y))$ is continuous. Also, it is one-to-one since if $f(x_1, y_1)=f(x_2,y_2)$, $y_1=y_2$ and it implies $x_1=x_2$. It is onto function since for $(x_0, y_0)$, there exists $(x_1,y_1)=(2x_0-\sqrt{1-y_0^2},y_0)$ satisfying $f(x_1,y_1)=(x_0,y_0)$. The inverse function $f^{-1}(x,y)=(2x-\sqrt{1-y_0^2}, y)$ and it's also continuous function from $\rr^2$ to $\rr^2$ by the same argument above. Finally, let's consider $f|_X$, then the codomain of the $f$ is $Y$ since $\frac{1}{4}(x+\sqrt{1-y^2})^2+y^2=$ .... Since $f|_X$ is continuous and its image is $Y$, by denoting inclusion $i_1:\rr\rightarrow Y$, $i_2\circ f|_X$ is continuous by problem 1. The inverse function $i_2\circ f^{-1}|_Y$, denoting inclusion function $i_2:\rr\rightarrow X$, it is also continuous function. Therefore, $X$ and $Y$ is homeomorphic.
+
+\section*{Problem 4}
+Since $A,B$ are closed in $X,Y$, $A^c,B^c$ are open in $X,Y$. Also, $(A\times B)^c=A^c\times Y \cup X \times B^c $ and since $X,A^c$ are open in $X$ and $Y,B^c$ are open in $Y$, $(A\times B)^c$ is open in $X\times Y$ and therefore, $A\times B$ is closed in $X\times Y$. 
+
+\section*{Problem 5}
+I'll first show the easy lemma.
+\begin{lemma}
+If $A\in B$, $\overline{A}\subset\overline{B}$.
+\end{lemma}
+\begin{proof}
+Let $\overline{A}\setminus\overline{B}\neq\phi$, then $A'=\overline{A}\cap \overline{B}	\varsubsetneq \overline{A}$ and $A'$ is closed set by definition of closure. Also, $A\subset A'$ since $\overline{A}$ and $\overline{B}$ contains $A$. It's contradiction to closure of $A$.
+\end{proof}
+\begin{enumerate}
+\item[(a)]
+Since $\overline{A}$ and $\overline{B}$ is closed set in $\overline{A}\cup \overline{B}$ is closed. Therefore, $\overline{A\cup B}\subset \overline{A}\cup \overline{B}$. I'll prove the inverse.
+
+Let $x\in\overline{A}\cup \overline{B}$, then $x\in \overline{A}$ or $x\in\overline{B}$. WLOG, let $x\in \overline{A}$, then $x\in\overline{A}\subset\overline{A\cup B}$ since $A\subset A\cup B$. Therefore, $\overline{A\cup B}\supset \overline{A}\cup \overline{B}$.
+\item[(b)] Let $x\in \bigcup \overline{A_\alpha}$, then $x\in \overline{A_\beta}$ for some $\beta\in \Lambda$ which is index set. Since $A_\beta\subset \bigcup A_\alpha$, $\overline{A_\beta}\subset \overline{\bigcup A_\alpha}$. Therefore, $x\in \overline{\bigcup A_\alpha}$. Hence, $\bigcup \overline{A_\alpha}\subset\overline{\bigcup A_\alpha}$.
+\end{enumerate}
+
+\section*{Problem 6}
+I'll first show the easy lemmas.
+\begin{lemma}
+$\overline{\mathbb{Q}}=\rr$ in $\rr$ with standard topology. Also, $\overline{\rr\setminus\mathbb{Q}}=\rr$
+\end{lemma}
+\begin{proof}
+Let $x\in \rr\setminus\mathbb{Q}$. Since standard topology of $\rr$ is 2nd countable and metric topology, each basis containing $x$ in the countable basis always contains $y\in \mathbb{Q}$. Therefore, $x\in \overline{\mathbb{Q}}$ and $\overline{\mathbb{Q}}=\rr$.
+
+Let $x\in \mathbb{Q}$. Then for any basis containing $x$ in the countable basis, there exists $y\in \rr\setminus\mathbb{Q}$.(For example, we can use $\frac{a}{b}\sqrt{2}$, $a,b\in \mathbb{Z}$ to approximate $x$.) Therefore, $x\in \overline{\rr\setminus\mathbb{Q}}$ and $\overline{\rr\setminus\mathbb{Q}}=\rr$
+\end{proof}
+\begin{enumerate}
+\item[(a)] Let $A_x=\{x\}$, $x\in \mathbb{Q}$ in $\rr$. Then $\overline{A_x}=\{x\}$ and $\bigcup_{x\in \mathbb{Q}} \overline{A_x}=\mathbb{Q}$ However, $\overline{\bigcup_{x\in \mathbb{Q}} A_x}=\overline{\mathbb{Q}}=\rr$.
+\item[(b)] Let $A=\rr\setminus\mathbb{Q}$ and $B=\mathbb{Q}$, then $\overline{A}=\overline{B}=\rr$ However, $\overline{A\cap B}=\overline{\phi}=\phi$.
+\item[(c)] Let $A,B$ same set in (b). Then $A\setminus B=\rr\setminus\mathbb{Q}$, so $\overline{A\setminus B}=\rr$, but $\overline{A}\setminus\overline{B}=\rr\setminus\rr=\phi$.
+\end{enumerate}
+\section*{Problem 7}
+\begin{enumerate}
+\item[(a)] Let the set $A$ and $a,b\in A$, $a<b$. If there exists no element between $a, b$, i.e. $a<c<b$, Let $a\in (-\infty, b)$, $b\in(a,\infty)$. Then $(-\infty, b)\cap (a,\infty)=\phi$ since there is no element between $a$ and $b$. If there exists a element between $a,b$, let it $c$. Let $a\in(-\infty, c)$, and $b\in(c,\infty)$, then $(-\infty, c)\cap (c,\infty)=\phi$. Therefore, $A$ is Hausdorff space.
+\item[(b)] Let $B$ be a subspace of Hausdorff space $A$ with subspace topology. Let $x,y\in B$, then since $x,y\in A$, there exists open set 
+$x\in U$, $y\in V$ such that $U\cap V=\phi$. 
+Then $x\in U\cap A$ and $y\in V\cap A$ 
+is open set in $A$ and $\left(U\cap A\right)\cap \left(V\cap A\right)=\phi$ 
+since $U\cap V=\phi$. Therefore, $B$ is Hausdorff space.
+\item[(c)] 
+Let $A$ and $B$ be Hausdorff spaces and consider $A\times B$ with product topology. Let $(x_1,y_1),(x_2,y_2)\in A\times B$. Then $x_1\neq x_2$ or $y_1\neq y_2$. Let $x_1\neq x_2$. 
+Then there exists $x_1\in U_1$, $x_2\in U_2$, $U_1\cap U_2=\phi$ and $U_1,U_2$ are open set in $X$. Let $y_1\in V_1,y_2\in V_2$ are open set in $Y$. Then, $U_1\times V_1$ is 
+a neighborhood of $(x_1,y_1)$ and $U_2\times V_2$ is a neighborhood of $(x_2,y_2)$ and $U_1\times V_1 \cap U_2\times V_2=\phi$. If $y_1\neq y_2$, we can repeat the procedure with $Y$. Hence, $X\times Y$ is a Hausdorff space.
+\end{enumerate}
+\section*{Problem 8}
+($\Rightarrow$) Let $X$ be a Hausdorff space. For $(x,y)\in X\times X$ such that $x\neq y$, there exists $x\in U$ and $y\in V$ in $X$ that $U, V$ are open set in $X$ and $U\cap V=\phi$ by the Hausdorff property of $X$. Then, $U\times V \cap D=\phi$ since there is no common element, i.e. $(x,x)$, in $U\times V$.
+
+($\Leftarrow$) Let $D$ be a closed set. For $(x,y)\in X\times X$ such that $x\neq y$, there exists $x\in U\times V$ in $X$ that $U, V$ are open set in $X$ and $U\times V\cap D=\phi$. Therefore, $U\cap V=\phi$. It implies there exists $x\in U$, $y\in V$ such that $U\cap V=\phi$ in $X$, implying $X$ is Hausdorff space.
+\section*{Problem 9}
+\begin{enumerate}
+\item[(a)] Let $\text{int} A\cap \partial A\neq \phi$, so $x\in \text{int} A\cap \partial A$. Since $x\in \text{int} A$, there exists open neighborhood of $x$ in $A$, and it implies the neighborhood of $x$ is disjoint about $A^c$. Therefore, $x\notin \overline{A^c}$, so $x\notin \partial A$ by definition. So, $\text{int} A\cap \partial A\neq \phi$ is contradiction.
+
+Since $\text{int} A\subset A$ and $\partial A\subset \overline{A}$, $\text{int} A\cup \partial A\subset \overline{A}$. I'll prove the converse. Let $x\in \overline{A}$. If $x\notin \text{int} A$, there does not exists open neighborhood contained in $A$. It implies for any open neighborhood of $x$, its intersection with $A^c$ is nonempty, implying $x\in\overline{A^c}$. Therefore, $x\in \overline{A}\cap\overline{A^c}=\partial A$. Consequently, $\overline{A}=\text{int} A \cup \partial A$.
+\item[(b)] If $\partial A=\phi$, $\text{int}A=\overline{A}$. Since $\text{int}A\subset A\subset \overline{A}$, it implies $A$ is closed and open. If $A$ is open and closed, $A=\text{int}A=\overline{A}$ by definition.
+\item[(c)] If $A$ is open, $\text{int}A=A$ and $\overline{A}\setminus\partial A=\text{int} A=A$ by (a). Conversely, if $\overline{A}\setminus\partial A=A$, $\partial A-A=\partial A$ by (a), and it implies $A\cap \partial A=\phi$. Let $A$ is not open, so there exists $x\in A$ such that any neighborhood of $x$ is not in $A$, then any neighborhood of $x$ intersect with $A^c$ and it implies $x\in \overline{A^c}$. Therefore, $x\in \partial A$ by definition, and $A\cap \partial A\neq \phi$, which is contradiction. Therefore, $A$ is open.
+\end{enumerate}
+
+\section*{Problem 10}
+\begin{enumerate}
+\item[(a)] By problem 2, $h(x)=f(x)-g(x)$ is continuous, and $h^{-1}\left(\{x\in \rr~|x\leq 0\}\right)$ is closed in $X$ since $\{x\in \rr~|x\leq 0\}$ is closed in $\rr$. Therefore, $\{x\in X~|f(x)\leq g(x)\}$ is closed in $X$.
+\item[(b)] Let $A=\{x\in X~|f(x)\geq g(x)\}$ and $B=\{x\in X~|f(x)\leq g(x)\}$. Let's consider $h^{-1}(C)$, where $C$ is closed set in $\rr$. Then $h^{-1}(C)=\left(h^{-1}(C)\cap A\right) \cup \left(h^{-1}(C)\cap B\right)=\left(f^{-1}(C)\cap A\right)\cup \left(g^{-1}(C)\cap B\right)$, which is closed in $X$.(Since $f(x)=g(x)$ on $A\cap B$, it makes this equality.) Therefore, $h$ is continuous.
+\end{enumerate}
+\section*{Problem 11} Since $X\in \B$, we need to show that for $B_1,B_2\in \B$ such that $x\in B_1\cap B_2$, $\exists x\in B_3\subset B_1\cap B_2$ to show that $\B$ is a basis. Consider $\pi_\alpha(x)\in U_\alpha=\pi_\alpha(B_1)\cap \pi_\alpha(B_2)$. Without finite $\alpha$ in index set, $U_\alpha=X$, and the remaining terms are open sets. Let $B_3=\prod_\alpha U_\alpha$, then $x\in B_3\subset B_1\cap B_2$. Therefore, $\B$ is a basis for the product topology.
+\section*{Problem 12} 
+\begin{enumerate}
+\item[(a)]
+($\Rightarrow$) Let $x\in \prod_\alpha X_\alpha$, then for any neighborhood of $x$, there exists $N\in\mathbb{N}$ such that $x_i$'s are in the neighborhood for $i\geq N$. Let $\alpha$ fixed, then it implies $\pi_\alpha(x_i)$'s are in the neighborhood of $\pi_\alpha(x)$ generated by project the neighborhood by $\pi_\alpha$ for $i\geq N$. Therefore, $\{\pi_\alpha(x_1),\pi_\alpha(x_2),\ldots\}$ converges to $\pi_\alpha(x)$ for each index $\alpha$.
+
+($\Leftarrow$) Let $\{\pi_\alpha(x_1),\pi_\alpha(x_2),\ldots\}$ converges to $\pi_\alpha(x)$ for each index $\alpha$. Let $U$ be a open neighborhood of $x$, then there exists $\{\alpha_1,\alpha_2,\ldots,\alpha_N\}$ such that $\pi_\alpha(U)\neq X$. Let $n_i\in \mathbb{Z}$ such that $\pi_{\alpha_i}(x_j)\in \pi_{\alpha_i}(U)$ for $j\geq n_i$ for each $1\leq i\leq N$. Let $n=\max\{n_1, n_2, \ldots, n_N\}$, then for any $x_i,i\geq n$, $\pi_\alpha(x_i)\in \pi_\alpha(U)$ since it is true for $\alpha\in \{\alpha_1,\alpha_2,\ldots,\alpha_N\}$ and $\pi_\alpha(U)=X$ for elsewhere.
+\item[(b)] For box topology on $\rr^\omega$, let $x_i=(1/i, 2/i, \ldots, n/i, \ldots)$, i.e. $n/i$ for n-th position. Let $0=x\in U=(-1, 1)\times (-1/2, 1/2)\times (-1/3,1/3)\times \cdots$, i.e. $(-1/n, 1/n)$ for n-th position. For fixed $n$, $n/i\rightarrow 0$ as $i\rightarrow \infty$, so $\pi_j(x_i)\rightarrow 0$ as $i\rightarrow \infty$ for fixed $j$. For fixed $N\in \mathbb{N}$, however, $N/N=1$, so $x_N\notin U$. Therefore, $x_i$ does not converges to $0$.
+\end{enumerate}
+
+\end{document}
